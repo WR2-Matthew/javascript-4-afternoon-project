@@ -17,8 +17,13 @@
   getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 */
 
-//Code Here
-
+const user = {
+  username: 'Matt',
+  email: 'm@m.com',
+  getUsername: function () {
+    return this.username
+  }
+}
 ////////// PROBLEM 2 //////////
 
 /*
@@ -30,14 +35,14 @@ function Animal(name, species, food) {
   this.species = species
   this.food = food
 
-  this.eat = function() {
+  this.eat = function () {
     return (
       this.name + ' is a ' + this.species + ' and likes to eat ' + this.food
     )
   }
 }
 
-//Code Here
+const animal1 = new Animal('Tiger', 'Cat', 'meat')
 
 ////////// PROBLEM 3 //////////
 
@@ -55,7 +60,7 @@ let who = {
   location: 'Belize',
 }
 
-//Code Here
+const whoSaysHi = sayHi.bind(who)
 
 ////////// PROBLEM 4 //////////
 
@@ -63,12 +68,13 @@ let who = {
   here we have a function that just returns the "this" keyword.  We will give context to "this", and your job is to tell us what the context is.
 */
 
+
 function whatIsThis() {
   return this
 }
 
 // uncomment the line below and tell us what the context of "this" is for whatIsThis()
-//let context1 = ???
+let context1 = this
 
 let product = {
   name: 'snake plant',
@@ -80,7 +86,7 @@ let product = {
 let func = whatIsThis.bind(product)
 
 // uncomment the line below and tell us what the context of "this" is when we invoke func
-//let context2 = ???
+let context2 = product
 
 let vacation = {
   location: 'Hawaii',
@@ -91,14 +97,14 @@ let vacation = {
 }
 
 // uncomment the line below and tell us what the context of "this" is when we invoke vacation.whatIsThis
-//let context3 = ???
+let context3 = vacation
 
 function Family(numParents, numKids, numPets) {
   this.numParents = numParents
   this.numKids = numKids
   this.numPets = numPets
 
-  this.whatIsThis = function() {
+  this.whatIsThis = function () {
     return this
   }
 }
@@ -106,4 +112,4 @@ function Family(numParents, numKids, numPets) {
 let family1 = new Family(2, 4, 1)
 
 // uncomment the line below and tell us what the context of "this" is for the instance of Family created above.
-// let context4 = ???
+let context4 = family1
